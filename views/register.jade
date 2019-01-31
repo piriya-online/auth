@@ -1,0 +1,55 @@
+extends layout
+
+block content
+
+	input#msg-pleaseFillAll(type='hidden', value="#{__('pleaseFillAll')}")
+	input#msg-passwordDifferent(type='hidden', value="#{__('passwordDifferent')}")
+	input#msg-loading(type='hidden', value="#{__('loading')}")
+	input#msg-invalidEmail(type='hidden', value="#{__('invalidEmail')}")
+	input#msg-checkingEmail(type='hidden', value="#{__('checkingEmail')}")
+	input#msg-checkingUsername(type='hidden', value="#{__('checkingUsername')}")
+	input#msg-usernameExist(type='hidden', value="#{__('usernameExist')}")
+	input#msg-emailExist(type='hidden', value="#{__('emailExist')}")
+
+	div.form-box
+		div.header.bg-light-blue #{__('registerHeader')}
+		form
+			div.body.bg-gray.for-hide
+				div#dv-error.callout.callout-danger.hidden
+					h4
+						i.fa.fa-warning 
+						span.msg-header &nbsp;#{__('error')}
+					p.msg-detail
+
+				div.form-group
+					input#email.form-control(type="text", name="email", placeholder="#{__('email')}")
+				div.form-group
+					input#username.form-control(type="text", name="username", placeholder="#{__('username')}")
+				div.form-group
+					input#password.form-control(type="password", placeholder="#{__('password')}")
+				div.form-group
+					input#password2.form-control(type="password", placeholder="#{__('retypePassword')}")
+
+			div.footer
+				div#dv-info.callout.callout-info.margin-bottom-0.hidden
+					h4
+						i.fa.fa-comment
+						span.msg-header &nbsp;#{__('information')}
+					p
+						img.loading.top-2(src="/images/icons/loading.gif", alt="loading") 
+						span.msg-detail
+				button#btn-register.btn.bg-light-blue.btn-block.for-hide(type="button") #{__('signUp')}
+				p.for-hide
+					a(href="/") #{__('alreadyMember')}
+
+		div.margin.text-center.for-hide
+			span #{__('signInSocial')}
+			br
+			button.btn.bg-light-blue.btn-circle
+				i.fa.fa-facebook
+			&nbsp;
+			button.btn.bg-aqua.btn-circle
+				i.fa.fa-google-plus
+			&nbsp;
+			button.btn.bg-blue.btn-circle
+				i.fa.fa-windows

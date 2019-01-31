@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	div.form-box
+		div.header.bg-light-blue #{__('forgotPassword')}
+		form
+			div.body.bg-gray
+				div.form-group
+					input.form-control(type="text", name="userid", placeholder="#{__('username')} / #{__('email')}")
+
+			div.footer
+				button.btn.bg-light-blue.btn-block(type="button") #{__('verifyData')}
+				p
+					a(href="/") #{__('signIn')}
+				a.text-center(href="/register") #{__('register')}

@@ -1,0 +1,59 @@
+extends layout
+
+block content
+
+	input#msg-pleaseFillAll(type='hidden', value="#{__('pleaseFillAll')}")
+	input#msg-checkingData(type='hidden', value="#{__('checkingData')}")
+	input#msg-usernameOrPasswordIncorrect(type='hidden', value="#{__('usernameOrPasswordIncorrect')}")
+
+	div.form-box
+		div.header.bg-light-blue #{__('signInHeader')}
+		form
+			div.body.bg-gray.for-hide
+				div#dv-error.callout.callout-danger.hidden
+					h4
+						i.fa.fa-warning 
+						span.msg-header &nbsp;#{__('error')}
+					p.msg-detail
+
+				div.form-group
+					input#username.form-control(type="text", placeholder="#{__('username')}", value="#{username}")
+				div.form-group
+					input#password.form-control(type="password", placeholder="#{__('password')}")
+				div.checkbox.pull-left
+					label
+						if cookie.remember == '1'
+							input#remember(type="checkbox", checked)
+						else 
+							input#remember(type="checkbox")
+						|&nbsp;#{__('remember')}				
+				div.btn-group.pull-right
+					span.btn.dropdown-toggle(data-toggle="dropdown") 
+						i.fa.fa-globe
+						|&nbsp;#{__('language')} 
+						span.caret
+					ul.dropdown-menu
+						if cookie.language == 'th'
+							li.active
+								a(href="javascript:void(0)") #{__('languageThai')}
+						else
+							li
+								a(href="/language/th") #{__('languageThai')}
+						if cookie.language == 'en'
+							li.active
+								a(href="javascript:void(0)") #{__('languageEnglish')}
+						else
+							li
+								a(href="/language/en") #{__('languageEnglish')}						
+				div.clearfix
+
+			div.footer
+				div#dv-info.callout.callout-info.margin-bottom-0.hidden
+					h4
+						i.fa.fa-comment
+						span.msg-header &nbsp;#{__('information')}
+					p
+						img.loading.top-2(src="/images/icons/loading.gif", alt="loading") 
+						span.msg-detail
+				button#btn-login.btn.bg-light-blue.btn-block.for-hide(type="button") #{__('signIn')}
+				a.for-hide.text-center(href="/register") #{__('register')}

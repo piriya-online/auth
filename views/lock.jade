@@ -1,0 +1,49 @@
+doctype html
+html.lockscreen
+	head
+		meta(charset='UTF-8')
+		title #{title} | Authentication Center
+		meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+		link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css')
+		link(rel='stylesheet', type='text/css', href='//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/AdminLTE.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+		//if lt IE 9
+			script(src='//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+			script(src='//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+
+	body
+
+		input#apiUrl(type='hidden', value='#{apiUrl}')
+		input#remember(type='hidden', value='#{cookie.remember}')
+	
+		div.center
+			div#time.headline.text-center
+			div.lockscreen-name #{cookie.name} ( 
+				span#username.text-light-blue #{username} 
+				| )
+			div.lockscreen-item
+				div.lockscreen-image
+					img(src="/images/AdminLTE/avatar5.png", alt="user image")
+				div.lockscreen-credentials
+					div.input-group
+						input#password.form-control(type="password", placeholder="#{__('password')}")
+						div.input-group-btn
+							button#btn-login.btn.btn-flat
+								i.fa.fa-arrow-right.text-muted
+			div.lockscreen-link
+				img.loading.top-2.hidden(src="/images/icons/loading.gif", alt="loading") 
+				span.loading.text-muted.hidden &nbsp;#{__('checkingData')}
+				i.error.text-red.fa.fa-warning.hidden 
+				span.error.text-red.hidden.pleaseFillPassword &nbsp;#{__('pleaseFillPassword')}
+				span.error.text-red.hidden.usernameOrPasswordIncorrect &nbsp;#{__('usernameOrPasswordIncorrect')}
+				span.error.text-red.hidden.manualMessage
+				p
+					br
+					a(href="./") #{__('signinDifferentUser')}
+
+
+		script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js')
+		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+		script(src='/javascripts/lock.js')
